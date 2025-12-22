@@ -30,21 +30,56 @@
             div2.innerHTML = "내용 변경"
             cls.innerHTML = "클래스 변경"
         }
-        function chg() {
-            let back = document.getElementById("div3")
-            back.innerHTML = "김개똥"
+        function func3() {
+            let div3 = document.getElementById("div3")
+            div3.innerHTML = "김개똥"
         }
-        function back() {
-            let back = document.querySelector("#div3")
-            back.innerHTML = "홍길동"
+        function func4() {
+            let div3 = document.querySelector("#div3")
+            div3.innerHTML = "홍길동"
+        }
+        function func5() {
+            let div = document.getElementById("div4");
+            div.style.backgroundColor = "green";
+            div.className = "abc";
+        }
+
+        function func6() {
+            let div = document.getElementById("div4");
+            div.style.backgroundColor = "";
+            div.className = "";
+        }
+        function func7() {
+            let div = document.getElementById("div4");
+            div.style.display = "none";
+        }
+        function func8() {
+            let div = document.getElementById("div4");
+            div.style.display = "block";
         }
     </script>
+    <style>
+        #div4 {
+            background-color: aqua;
+        }
+
+        .abc {
+            color: yellow;
+        }
+    </style>
 </head>
 
 <body>
+    <div id="div4">홍길동</div>
+    <button onclick="func5()">변경</button>
+    <button onclick="func6()">되돌리기</button>
+    <br>
+    <button onclick="func7()">숨기기</button>
+    <button onclick="func8()">보이기</button>
+    <hr>
     <div id="div3">홍길동</div>
-    <button onclick="chg()">변경</button>
-    <button onclick="back()">되돌리기</button>
+    <button onclick="func3()">변경</button>
+    <button onclick="func4()">되돌리기</button>
     <div id="div2">div2</div>
     <div class="class2">class2</div>
     <span onclick="func2()">클릭</span>
