@@ -28,6 +28,17 @@
             let div = document.getElementById("div1");
             size -= 3
             div.style.fontSize = size + "px"
+        }
+        let num = 1;
+        function prev() {
+            let img = document.getElementById("pic")
+            num = (num > 1 ? num - 1 : 8)
+            img.src = "./images/최근상품0" + num + ".jpg"
+        }
+        function next() {
+            let img = document.getElementById("pic")
+            num = (num > 7 ? 1 : num + 1)
+            img.src = "./images/최근상품0" + num + ".jpg"
 
         }
     </script>
@@ -35,10 +46,29 @@
         .back {
             background-color: gold;
         }
+
+        #wrap {
+            width: 150px;
+            height: 150px;
+            text-align: center;
+        }
+
+        #pic {
+            width: 150px;
+            height: 150px;
+        }
     </style>
 </head>
 
 <body>
+
+    <div id="wrap">
+        <img src="./images/최근상품01.jpg" id="pic"><br>
+        <input type="button" value="이전 사진" onclick="prev()">
+        <input type="button" value="다음 사진" onclick="next()">
+    </div>
+    <hr>
+
     <div id="div1">div</div>
     <button onclick="change()" id="btn">변경</button>
     <hr>
