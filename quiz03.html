@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let bool;
+        function change() {
+            let div = document.getElementById("div1");
+            let btn = document.getElementById("btn");
+            let color = (bool) ? "back" : "";
+            let msg = (bool) ? "되돌리기" : "변경";
+
+            div.className = color;
+            btn.innerHTML = msg;
+
+            bool = !bool;
+        }
+        let size = 15;
+        function plus() {
+            let div = document.getElementById("div1");
+            size += 3
+            div.style.fontSize = size + "px"
+        }
+        function minus() {
+            let div = document.getElementById("div1");
+            size -= 3
+            div.style.fontSize = size + "px"
+
+        }
+    </script>
+    <style>
+        .back {
+            background-color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">div</div>
+    <button onclick="change()" id="btn">변경</button>
+    <hr>
+    <!-- <div id="div1" class="back">div</div>
+    <button onclick="change()" id="btn">되돌리기</button> -->
+
+    <button onclick="plus()">+</button>
+    <button onclick="minus()">-</button>
+</body>
+
+</html>
