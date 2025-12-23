@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function init() {
+            div = document.getElementById("div1")
+
+            let name = prompt("이름를 입력하세요.")
+            let age = prompt("나이를 입력하세요.")
+            let addr = prompt("주소를 입력하세요.")
+
+            div.innerHTML = `
+            당신의 이름은? ${name} <br>
+            ${name}님의 나이는? ${age} <br>
+            ${name}님의 주소는? ${addr} <br>
+            <table border="1">
+            <tr>
+                <th>나이</th>
+                <th>이름</th>
+                <th>주소</th>
+            </tr>
+            <tr>
+                <td>${name}</td>
+                <td>${age}</td>
+                <td>${addr}</td>
+            </tr>
+        </table>
+        `
+
+            divName = document.querySelector(".name")
+            divAge = document.querySelector(".age")
+            divAddr = document.querySelector(".addr")
+
+            divName.innerHTML = name
+            divAge.innerHTML = age
+            divAddr.innerHTML = addr
+
+            console.log(divName, divAge, divAddr)
+        }
+
+
+    </script>
+</head>
+
+<body onload="init()">
+    <div id="div1"></div>
+    <hr>
+    <div id="div2">
+        <table border="1">
+            <tr>
+                <th>나이</th>
+                <th>이름</th>
+                <th>주소</th>
+            </tr>
+            <tr>
+                <td class="name"></td>
+                <td class="age"></td>
+                <td class="addr"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
