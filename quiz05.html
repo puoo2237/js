@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let saveId = "javascript";
+        let id, pwd, pwd_check;
+        let span;
+
+        function idCheck() {
+            id = document.getElementById("txt1")
+            if (id.value.length < 4) {
+                span = document.getElementById("notice")
+                span.innerHTML = "길이가 짧습니다.(4자 이상 입력해주세요)<br>"
+            } else {
+                span.innerHTML = "가입 가능한 id입니다.<br>";
+            }
+            if (id.value == saveId)
+                span.innerHTML = "존재하는 id입니다.<br>";
+        }
+        function pwdCheck() {
+            pwd = document.getElementById("txt2");
+            pwd_check = document.getElementById("txt3");
+            if (pwd.value == pwd_check.value) {
+                span.innerHTML = "일치합니다.<br>";
+            } else {
+                span.innerHTML = "비밀번호 일치하지 않음<br>";
+                pwd.value = "";
+                pwd_check.value = "";
+                pwd.focus();
+            }
+        }
+        function btn() {
+            let name = document.getElementById("txt4");
+            name.style.backgroundColor = "skyblue";
+            span.innerHTML = `
+                <h2>입력 데이터</h2><br>
+                <span>id: <b>${id.value}</b><br>
+                    pwd: <b>${pwd.value}</b><br>
+                    pwd_check: <b>${pwd_check.value}</b><br>
+                    name: <b>${name.value}</b><br></span>
+            `
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" id="txt1" oninput="idCheck()" placeholder="input id"><br>
+    <input type="text" id="txt2" placeholder="input password"><br>
+    <input type="text" id="txt3" onchange="pwdCheck()" placeholder="password check"><br>
+    <input type="text" id="txt4" placeholder="input name"><br>
+    <span id="notice"></span>
+    <button onclick="btn()">가입</button>
+</body>
+
+</html>
