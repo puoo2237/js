@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
+        let id, pwd, pwd_check, name, msg
         function init(){
-            const id = document.getElementById("id")
-            const pwd = document.getElementById("pwd");
-            const pwd_check = document.getElementById("pwd_check");
-            const name = document.getElementById("name");
-            const msg = document.getElementById("msg")
+            id = document.getElementById("id")
+            pwd = document.getElementById("pwd");
+            pwd_check = document.getElementById("pwd_check");
+            name = document.getElementById("name");
+            msg = document.getElementById("msg")
         }
 
         // 아이디 검증
@@ -47,22 +48,38 @@
 
         // 버튼 클릭시
         //  input 창에 입력된 모든 값을 출력
+        //  모든 항목은 필수 항목
+        //  - id 필수 항목
+        //  - pwd 필수 항목
+        //  - pwd_check 필수 항목
+        //  - name 필수 항목
         function btn() {
-            msg.innerHTML = `
-                <h2>입력 데이터</h2>
-                <span><p>id: <b>${id.value}</b><br>
-                    pwd: <b>${pwd.value}</b><br>
-                    pwd_check: <b>${pwd_check.value}</b><br>
-                    name: <b>${name.value}</b><br></p></span>
-            `
+            if (!id.value){
+               msg.innerHTML = "id 필수 항목";
+            }else if (!pwd.value){
+               msg.innerHTML = "pwd 필수 항목";
+            }else if (!pwd_check.value){
+               msg.innerHTML = "pwd_check 필수 항목";
+            }else if (!name.value){
+               msg.innerHTML = "name 필수 항목";
+            }else{
+                msg.innerHTML = `
+                    <h2>입력 데이터</h2>
+                    <span><p>id: <b>${id.value}</b><br>
+                        pwd: <b>${pwd.value}</b><br>
+                        pwd_check: <b>${pwd_check.value}</b><br>
+                        name: <b>${name.value}</b><br></p></span>
+                `
+            }
+
         }
     </script>
 </head>
 
 <body onload="init()">
     <input type="text" id="id" oninput="idCheck()" placeholder="input id"><br>
-    <input type="text" id="pwd" placeholder="input password"><br>
-    <input type="text" id="pwd_check" onchange="pwdCheck()" placeholder="password check"><br>
+    <input type="password" id="pwd" placeholder="input password"><br>
+    <input type="password" id="pwd_check" onchange="pwdCheck()" placeholder="password check"><br>
     <input type="text" id="name" placeholder="input name"><br>
     <div id="msg"></div>
     <button onclick="btn()">가입</button>
