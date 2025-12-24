@@ -6,25 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        let saveId = "javascript";
-        let id, pwd, pwd_check;
-        let span;
-
         // 아이디 검증
         //  길이는 최소 4자 이상
         //  - 4자 이상 입력시 '가입 가능'
         //  - 3자 이하 입력시 '길이가 짧습니다.'
         //  javascript 입력시 '존재하는 아이디입니다.'
         function idCheck() {
-            id = document.getElementById("txt1")
+            const id = document.getElementById("id")
+            const saveId = "javascript";
+            const msg = document.getElementById("msg")
+            
             if (id.value.length < 4) {
-                span = document.getElementById("notice")
-                span.innerHTML = "길이가 짧습니다.(4자 이상 입력해주세요)<br>"
+                msg.innerHTML = "길이가 짧습니다.(4자 이상 입력해주세요)<br>"
             } else {
-                span.innerHTML = "가입 가능한 id입니다.<br>";
+                msg.innerHTML = "가입 가능한 id입니다.<br>";
             }
-            if (id.value == saveId)
-                span.innerHTML = "존재하는 id입니다.<br>";
+            if (id.value === saveId)
+                msg.innerHTML = "존재하는 id입니다.<br>";
         }
 
         // 비밀번호 검증
@@ -32,12 +30,14 @@
         //  틀리다면 두 입력란을 지우고 '비밀번호 일치하지 않음'
         //  일치하는 경우 '일치합니다.'
         function pwdCheck() {
-            pwd = document.getElementById("txt2");
-            pwd_check = document.getElementById("txt3");
-            if (pwd.value == pwd_check.value) {
-                span.innerHTML = "일치합니다.<br>";
+            const pwd = document.getElementById("pwd");
+            const pwd_check = document.getElementById("pwd_check");
+            const msg = document.getElementById("msg")
+
+            if (pwd.value === pwd_check.value) {
+                msg.innerHTML = "일치합니다.<br>";
             } else {
-                span.innerHTML = "비밀번호 일치하지 않음<br>";
+                msg.innerHTML = "비밀번호 일치하지 않음<br>";
                 pwd.value = "";
                 pwd_check.value = "";
                 pwd.focus();
@@ -47,25 +47,30 @@
         // 버튼 클릭시
         //  input 창에 입력된 모든 값을 출력
         function btn() {
-            let name = document.getElementById("txt4");
+            const id = document.getElementById("id")
+            const pwd = document.getElementById("pwd");
+            const pwd_check = document.getElementById("pwd_check");
+            const name = document.getElementById("name");
+            const msg = document.getElementById("msg")
+
             name.style.backgroundColor = "skyblue";
-            span.innerHTML = `
-                <h2>입력 데이터</h2><br>
-                <span>id: <b>${id.value}</b><br>
+            msg.innerHTML = `
+                <h2>입력 데이터</h2>
+                <span><p>id: <b>${id.value}</b><br>
                     pwd: <b>${pwd.value}</b><br>
                     pwd_check: <b>${pwd_check.value}</b><br>
-                    name: <b>${name.value}</b><br></span>
+                    name: <b>${name.value}</b><br></p></span>
             `
         }
     </script>
 </head>
 
 <body>
-    <input type="text" id="txt1" oninput="idCheck()" placeholder="input id"><br>
-    <input type="text" id="txt2" placeholder="input password"><br>
-    <input type="text" id="txt3" onchange="pwdCheck()" placeholder="password check"><br>
-    <input type="text" id="txt4" placeholder="input name"><br>
-    <span id="notice"></span>
+    <input type="text" id="id" oninput="idCheck()" placeholder="input id"><br>
+    <input type="text" id="pwd" placeholder="input password"><br>
+    <input type="text" id="pwd_check" onchange="pwdCheck()" placeholder="password check"><br>
+    <input type="text" id="name" placeholder="input name"><br>
+    <div id="msg"></div>
     <button onclick="btn()">가입</button>
 </body>
 
