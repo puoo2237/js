@@ -10,6 +10,11 @@
         let id, pwd, pwd_check;
         let span;
 
+        // 아이디 검증
+        //  길이는 최소 4자 이상
+        //  - 4자 이상 입력시 '가입 가능'
+        //  - 3자 이하 입력시 '길이가 짧습니다.'
+        //  javascript 입력시 '존재하는 아이디입니다.'
         function idCheck() {
             id = document.getElementById("txt1")
             if (id.value.length < 4) {
@@ -21,6 +26,11 @@
             if (id.value == saveId)
                 span.innerHTML = "존재하는 id입니다.<br>";
         }
+
+        // 비밀번호 검증
+        //  처음과 두번째 입력 후 포커스가 이동되면 두 비밀번호를 비교하고,
+        //  틀리다면 두 입력란을 지우고 '비밀번호 일치하지 않음'
+        //  일치하는 경우 '일치합니다.'
         function pwdCheck() {
             pwd = document.getElementById("txt2");
             pwd_check = document.getElementById("txt3");
@@ -33,6 +43,9 @@
                 pwd.focus();
             }
         }
+
+        // 버튼 클릭시
+        //  input 창에 입력된 모든 값을 출력
         function btn() {
             let name = document.getElementById("txt4");
             name.style.backgroundColor = "skyblue";
