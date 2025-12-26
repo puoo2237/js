@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const num = 1;
+        let msg = "";
+        // 조건을 만족해도 break를 넣어주지 않으면 default까지 실행하므로
+        // break를 잊지말고 적어줘야 함
+        switch (num) {
+            case 1: console.log(111); msg = "1 입력"; break;
+            case 2: console.log(222); msg = "2 입력"; break;
+            default: console.log(333); msg = "1, 2를 제외 입력";
+        }
+        console.log(msg);
+
+        // default 생략 가능 
+        // 두 케이스에 해당하지 않으면 아무것도 출력하지 않음
+        let str = "a";
+        switch (str) {
+            case "a": console.log("알파벳 a 입력"); break;
+            case "A": console.log("알파벳 A 입력"); break;
+        }
+
+        // 연산
+        let num2 = 10;
+        switch (num2 % 2) {
+            case 0:
+                console.log("입력 값은 짝수다.")
+                if (num2 % 3 == 0) {
+                    console.log("2, 3 공배수")
+                } else {
+                    console.log("2의 배수")
+                }
+                break;
+            case 1:
+                console.log("입력 값은 홀수다.")
+                break;
+        }
+
+        let s, e;
+        function digClock() {
+            s = new Date();
+            console.log("s: ", s)
+            console.log("s: ", s.getFullYear());
+            document.getElementById("clock").innerHTML = s;
+        }
+        function start() {
+            const sTime = new Date();
+            s = sTime.getTime(); // 초 단위로 환산
+            console.log("start: ", s)
+        }
+        function end() {
+            const eTime = new Date();
+            e = eTime.getTime();
+            console.log("end: ", e)
+            console.log("사용 시간: ", (e - s) / 1000)
+        }
+
+        function init() {
+            const btn = document.getElementById("btn");
+            btn.addEventListener("click", btn2); // btn2 함수로 버튼에 대한 이벤트 설정
+            addEventListener("keydown", kDown); // kDown 함수로 전역에 대한 이벤트 설정
+        }
+        function kDown(event){
+            // alert("키 다운 호출")
+            // console.log(event)
+            console.log(event.code)
+            console.log(event.key)
+        }
+        function btn1() {
+            alert("on click 실행")
+        }
+        function btn2(){
+            alert("2 실행")
+        }
+    </script>
+</head>
+
+<body onload="init()">
+    <button onclick="btn1()">클릭</button>
+    <button id="btn">클릭</button>
+    <hr>
+
+    <div id="clock"></div>
+    <button onclick="digClock()">오늘의 날짜</button>
+    <button onclick="start()">시작</button>
+    <button onclick="end()">종료</button>
+</body>
+
+</html>
