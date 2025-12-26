@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #pic {
+            width: 150px;
+            height: 150px;
+            margin: 100px;
+        }
+    </style>
+    <script>
+        let loc_top = 0;
+        let loc_down = 0;
+        let loc_left = 0;
+        let loc_right = 0;
+        function init() {
+            addEventListener("keydown", kDown);
+        }
+        function kDown(event) {
+            const pic = document.getElementById("pic");
+
+            switch (event.code) {
+                case "ArrowUp":
+                    loc_top += 100;
+                    pic.style.marginTop = -loc_top + "px";
+                    break;
+                case "ArrowDown":
+                    loc_down += 100;
+                    pic.style.marginBottom = -loc_down + "px";
+                    break;
+                case "ArrowLeft":
+                    loc_left += 100;
+                    pic.style.marginLeft = -loc_left + "px";
+                    break;
+                case "ArrowRight":
+                    loc_right += 100;
+                    pic.style.marginRight = -loc_right + "px";
+                    break;
+            }
+
+        }
+    </script>
+</head>
+
+<body onload="init()">
+    <img src="images/jo.png" id="pic">
+</body>
+
+</html>
