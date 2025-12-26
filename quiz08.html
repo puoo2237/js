@@ -7,37 +7,33 @@
     <title>Document</title>
     <script>
         let move = 0;
-        let s;
-        let pic, title;
+        let iter = 0;
         const stride = 10;
-        const stop_point = 250;
+        const stop_point = 400;
+        let s, e, pic, title;
 
         function init() {
             pic = document.getElementById("pic");
             title = document.getElementById("title");
             addEventListener("keydown", kDown);
         }
-        // 250px에 도달하면 정지
+        // 400px에 도달하면 정지
         function kDown(event) {
             if (event.code === "Space") {
                 if (move <= stop_point) {
-
-                    move += stride
-                    pic.style.marginLeft = move + "px";
-
-                    if (move == stride) {
-                        pic.src = "images/jol02.png"
-                        sTime = new Date();
-                        s = sTime.getTime();
+                    if (move === 0) {
+                        s = new Date().getTime();
                         title.innerHTML = "<b>START</b>";
-
                     }
-                    else if (move == stop_point) {
-                        pic.src = "images/jol03.png"
-                        const eTime = new Date();
-                        e = eTime.getTime();
+                    else if (move === stop_point) {
+                        e = new Date().getTime();
                         title.innerHTML = "<b>END:</b> " + ((e - s) / 1000) + 's';
                     }
+                    else {
+                        pic.style.marginLeft = move + "px";
+                        pic.src = "images/jol0" + ((++iter % 3) + 1) + ".png"
+                    }
+                    move += stride
                 }
             } else {
                 addEventListener("keydown", stop)
@@ -52,7 +48,6 @@
             width: 150px;
             height: 150px;
         }
-
         #title {
             margin-left: 100px;
         }
