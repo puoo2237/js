@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let move = 0;
+        let s;
+        let pic, title;
+        const stride = 10;
+        const stop_point = 250;
+
+        function init() {
+            pic = document.getElementById("pic");
+            title = document.getElementById("title");
+            addEventListener("keydown", kDown);
+        }
+        // 250px에 도달하면 정지
+        function kDown(event) {
+            if (event.code === "Space") {
+                if (move <= stop_point) {
+
+                    move += stride
+                    pic.style.marginLeft = move + "px";
+
+                    if (move == stride) {
+                        pic.src = "images/jol02.png"
+                        sTime = new Date();
+                        s = sTime.getTime();
+                        title.innerHTML = "<b>START</b>";
+
+                    }
+                    else if (move == stop_point) {
+                        pic.src = "images/jol03.png"
+                        const eTime = new Date();
+                        e = eTime.getTime();
+                        title.innerHTML = "<b>END:</b> " + ((e - s) / 1000) + 's';
+                    }
+                }
+            } else {
+                addEventListener("keydown", stop)
+            }
+        }
+        function stop(event) {
+            console.log("종료되었습니다.")
+        }
+    </script>
+    <style>
+        #pic {
+            width: 150px;
+            height: 150px;
+        }
+
+        #title {
+            margin-left: 100px;
+        }
+    </style>
+</head>
+
+<body onload="init()">
+    <div id="title"><b>READY</b></div>
+    <hr>
+    <img src="images/jol01.png" id="pic">
+</body>
+
+</html>
