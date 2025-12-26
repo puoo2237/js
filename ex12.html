@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 메모리에 미리 캐싱하므로 언제 호출하든 상관없음
+        function sumFunc01() {
+            alert("실행-01")
+        }
+        // sumFunc01()
+
+        // 함수를 변수처럼 지정하기 
+        // 메모리에 순차적으로 캐싱하며, 호출 후 제거 => 항상 선언한 함수보다 아래쪽에서 호출해야 함)
+        let sumFunc = function () {
+            alert("실행-02")
+        }
+        // sumFunc()
+
+        const test03 = () => alert("실행-03")
+        // test03()
+
+        function test04() {
+            alert(1);
+            alert(2);
+            return 100;
+        }
+        // alert(test04());
+
+        const test05 = () => {
+            alert(1);
+            alert(2);
+            return 100;
+        }
+        // alert(test05());
+
+        const test06 = (a, b) => {
+            alert(a + b);
+        }
+        // test06(10, 20);
+
+        const test07 = () => { 100 + 200 }
+        const test08 = () => 100 + 200 // return
+        const test09 = () => (100 + 200) // return
+        document.write(`test07: ${test07()}<br>`) // undefined
+        document.write(`test08: ${test08()}<br>`)
+        document.write(`test09: ${test09()}<br>`)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
