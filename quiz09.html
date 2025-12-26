@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function bg(tr) {
+            tr.style.backgroundColor = tr.style.backgroundColor === "yellow" ? "white" : "yellow";
+        }
+    </script>
+    <style>
+        #row {
+            &:hover {
+                background-color: lightgray;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <table border="1">
+        <tr id="row" onclick="bg(this)">
+            <th>아이디</th>
+            <th>이름</th>
+        </tr>
+        <tr id="row" onclick="bg(this)">
+
+            <td>1. aaa</td>
+            <td>1. 홍길동</td>
+        </tr>
+        <tr id="row" onclick="bg(this)">
+
+            <td>2. aaa</td>
+            <td>2. 홍길동</td>
+        </tr>
+        <tr id="row" onclick="bg(this)">
+
+            <td>3. aaa</td>
+            <td>3. 홍길동</td>
+        </tr>
+        <tr id="row" onclick="bg(this)">
+
+            <td>4. aaa</td>
+            <td>4. 홍길동</td>
+        </tr>
+        <tr id="row" onclick="bg(this)">
+
+            <td>5. aaa</td>
+            <td>5. 홍길동</td>
+        </tr>
+        <tr id="row" onclick="bg(this)">
+
+            <td>6. aaa</td>
+            <td>6. 홍길동</td>
+        </tr>
+        <tr id="row" onclick="bg(this)">
+
+            <td>7. aaa</td>
+            <td>7. 홍길동</td>
+        </tr>
+
+    </table>
+</body>
+
+</html>
