@@ -6,8 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
+        // 테이블을 만들고 마우스호버시 회색으로 표시하고
+        // 해당 태그 클릭시 노란색으로 표시 (색 변경은 한번에 하나만)
+        let prev
         function bg(tr) {
-            tr.style.backgroundColor = tr.style.backgroundColor === "yellow" ? "white" : "yellow";
+            const now = tr;
+            if (prev) {
+                prev.style.backgroundColor = "white";
+            }
+            tr.style.backgroundColor = "yellow";
+            prev = now
         }
     </script>
     <style>
@@ -21,46 +29,49 @@
 
 <body>
     <table border="1">
-        <tr id="row" onclick="bg(this)">
-            <th>아이디</th>
-            <th>이름</th>
-        </tr>
-        <tr id="row" onclick="bg(this)">
+        <thead>
+            <tr id="row" onclick="bg(this)">
+                <th>아이디</th>
+                <th>이름</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="row" onclick="bg(this)">
 
-            <td>1. aaa</td>
-            <td>1. 홍길동</td>
-        </tr>
-        <tr id="row" onclick="bg(this)">
+                <td>1. aaa</td>
+                <td>1. 홍길동</td>
+            </tr>
+            <tr id="row" onclick="bg(this)">
 
-            <td>2. aaa</td>
-            <td>2. 홍길동</td>
-        </tr>
-        <tr id="row" onclick="bg(this)">
+                <td>2. aaa</td>
+                <td>2. 홍길동</td>
+            </tr>
+            <tr id="row" onclick="bg(this)">
 
-            <td>3. aaa</td>
-            <td>3. 홍길동</td>
-        </tr>
-        <tr id="row" onclick="bg(this)">
+                <td>3. aaa</td>
+                <td>3. 홍길동</td>
+            </tr>
+            <tr id="row" onclick="bg(this)">
 
-            <td>4. aaa</td>
-            <td>4. 홍길동</td>
-        </tr>
-        <tr id="row" onclick="bg(this)">
+                <td>4. aaa</td>
+                <td>4. 홍길동</td>
+            </tr>
+            <tr id="row" onclick="bg(this)">
 
-            <td>5. aaa</td>
-            <td>5. 홍길동</td>
-        </tr>
-        <tr id="row" onclick="bg(this)">
+                <td>5. aaa</td>
+                <td>5. 홍길동</td>
+            </tr>
+            <tr id="row" onclick="bg(this)">
 
-            <td>6. aaa</td>
-            <td>6. 홍길동</td>
-        </tr>
-        <tr id="row" onclick="bg(this)">
+                <td>6. aaa</td>
+                <td>6. 홍길동</td>
+            </tr>
+            <tr id="row" onclick="bg(this)">
 
-            <td>7. aaa</td>
-            <td>7. 홍길동</td>
-        </tr>
-
+                <td>7. aaa</td>
+                <td>7. 홍길동</td>
+            </tr>
+        </tbody>
     </table>
 </body>
 
