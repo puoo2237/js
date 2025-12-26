@@ -48,7 +48,7 @@
 
         // 버튼 클릭시
         //  input 창에 입력된 모든 값을 출력
-        //  모든 항목은 필수 항목
+        //  모든 항목은 필수 항목 (값이 없는 경우, 해당 포커스로 이동)
         //  - id 필수 항목
         //  - pwd 필수 항목
         //  - pwd_check 필수 항목
@@ -56,12 +56,16 @@
         function btn() {
             if (!id.value){
                msg.innerHTML = "id 필수 항목";
+               id.focus()
             }else if (!pwd.value){
                msg.innerHTML = "pwd 필수 항목";
+               pwd.focus()
             }else if (!pwd_check.value){
                msg.innerHTML = "pwd_check 필수 항목";
+               pwd_check.focus()
             }else if (!name.value){
                msg.innerHTML = "name 필수 항목";
+               name.focus()
             }else{
                 msg.innerHTML = `
                     <h2>입력 데이터</h2>
