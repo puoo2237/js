@@ -12,9 +12,10 @@
         function bg(tr) {
             const now = tr;
             if (prev) {
-                prev.style.backgroundColor = "white";
+                prev.style.backgroundColor = "";
             }
-            tr.style.backgroundColor = "yellow";
+
+            tr.style.backgroundColor = prev === tr ? "" : "yellow";
             prev = now
         }
     </script>
