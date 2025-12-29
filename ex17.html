@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 배열
+        const test1 = () => {
+            const num = "100";
+            console.log(num);
+
+            const num1 = ["100", 100, "값", 1.111];
+            console.log(num1);
+            console.log(num1[0]);
+            num1[0] = "다른 값"
+            console.log(num1[0]);
+            console.log(num1[3]);
+            console.log(num1.length);
+
+            for (let i = 0; i < num1.length; i++) {
+                // console.log("i: ", i)
+                console.log(`num1 ${i}: `, num1[i])
+            }
+        }
+        const test2 = () => {
+            const arr = ["내용1", "내용2", "내용3"]
+            const str1 = arr.join()
+            const str2 = arr.join("-")
+
+            console.log("배열 type: ", typeof arr)
+            console.log("str1 type: ", typeof str1)
+            console.log("str2 type: ", typeof str2)
+
+            console.log("배열 ", arr)
+            console.log("str1 ", str1)
+            console.log("str2 ", str2)
+
+            console.log("배열[0] ", arr[0])
+            console.log("str1[0] ", str1[0])
+            console.log("str2[0] ", str2[0])
+
+        }
+        const test3 = () => {
+            let arr = [111, 222, 333]
+            console.log(arr)
+            arr[arr.length] = "값 추가"
+            console.log("length: ", arr)
+
+            arr.push("값1", "값2") // 값 추가
+            console.log("push: ", arr)
+
+            arr.pop() // 마지막 값 제거
+            console.log("pop: ", arr)
+
+            arr.unshift("v1", "v2") // 맨 앞에 값 추가
+            console.log("unshift: ", arr)
+
+            arr.shift() // 맨 앞에 있는 값 제거
+            console.log("shift: ", arr)
+
+            const arr2 = ["aaa", "bbb"]
+            // const result = arr.concat(arr2) // 배열 합치기
+            // console.log("concat: ", result)
+            arr.push(arr2) // 배열 합치기
+            console.log("push: ", arr) // ['v2', 111, 222, 333, '값 추가', '값1', ['aaa', 'bbb']]
+            console.log("push: ", arr.join()) // v2,111,222,333,값 추가,값1,aaa,bbb 
+            console.log(`push: ${arr}`) // v2,111,222,333,값 추가,값1,aaa,bbb
+            console.log("concat: ", arr.concat(arr2)) // 배열 합치기
+            console.log(`concat: ${arr.concat(arr2)}`) // 배열 합치기
+        }
+
+        const test4 = () => {
+            const arr = [111, 222, 333]
+            arr.forEach(printArr)
+            // for(let i=0; i<arr.length; i++){
+            //     console.log(i, arr[i])
+            // }
+            arr.forEach(function (item, index) {
+                console.log(`1데이터 ${index} : ${item}`)
+            })
+
+            arr.forEach((item, index) => {
+                console.log(`2데이터 ${index} : ${item}`)
+            })
+        }
+        function printArr(item, index) {
+            console.log(`데이터 ${index} : ${item}`)
+        }
+
+        const test5 = () => {
+            const arr = [111, 222, 333]
+            const newArr = arr.map(mapTest)
+            console.log(newArr)
+
+            const newArr2 = arr.map(function (value) {
+                return value * 10;
+            });
+            console.log(newArr2)
+
+            const newArr3 = arr.map((value) => {
+                return value * 10;
+            });
+            console.log(newArr3)
+        }
+        function mapTest(value) {
+            return value * 10;
+        }
+    </script>
+</head>
+
+<body onload="test5()">
+
+</body>
+
+</html>
