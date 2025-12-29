@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 반복문을 이용하여 구문 만들기
+        // 특정 번호에 마우스가 올라가면 해당 번호와 배수들의 글자색과 크기 변경
+        // 마우스가 나오면 원래대로 
+        window.onload = () => {
+            div = document.getElementById("wrap")
+            contents = ""
+            for (let i = 1; i <= 10; i++) {
+                contents += `<div id="row_${i}" onmouseover="over(this)" onmouseout="out(this)">${i}.div<br></div>`
+            }
+            div.innerHTML = contents;
+        }
+
+        const over = (div) => {
+            i = 1;
+            id = Number(div.id.split("_")[1]);
+            for (let j = id; j <= 10; j = id * i++) {
+                even_div = document.getElementById(`row_${j}`)
+                even_div.setAttribute("style", "color:red; font-size:20px;")
+            }
+        }
+
+        const out = (div) => {
+            i = 1;
+            id = Number(div.id.split("_")[1]);
+            for (let j = id; j <= 10; j = id * i++) {
+                even_div = document.getElementById(`row_${j}`)
+                even_div.removeAttribute("style")
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <div id="wrap"></div>
+</body>
+
+</html>
