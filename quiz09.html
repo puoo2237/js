@@ -6,6 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
+        // tbody 내용을 for문을 이용해서 작성
+        function init() {
+            body_tag = ""
+            for (let i = 1; i <= 7; i++) {
+                body_tag += `
+                    <tr id="row" onclick="bg(this)">
+                        <td>${i}. aaa</td>
+                        <td>${i}. 홍길동</td>
+                        </tr>
+                        `
+            }
+            document.getElementById("table_body").innerHTML = body_tag
+        }
+
         // 테이블을 만들고 마우스호버시 회색으로 표시하고
         // 해당 태그 클릭시 노란색으로 표시 (색 변경은 한번에 하나만)
         let prev
@@ -28,7 +42,7 @@
     </style>
 </head>
 
-<body>
+<body onload="init()">
     <table border="1">
         <thead>
             <tr id="row" onclick="bg(this)">
@@ -36,43 +50,8 @@
                 <th>이름</th>
             </tr>
         </thead>
-        <tbody>
-            <tr id="row" onclick="bg(this)">
+        <tbody id="table_body"></tbody>
 
-                <td>1. aaa</td>
-                <td>1. 홍길동</td>
-            </tr>
-            <tr id="row" onclick="bg(this)">
-
-                <td>2. aaa</td>
-                <td>2. 홍길동</td>
-            </tr>
-            <tr id="row" onclick="bg(this)">
-
-                <td>3. aaa</td>
-                <td>3. 홍길동</td>
-            </tr>
-            <tr id="row" onclick="bg(this)">
-
-                <td>4. aaa</td>
-                <td>4. 홍길동</td>
-            </tr>
-            <tr id="row" onclick="bg(this)">
-
-                <td>5. aaa</td>
-                <td>5. 홍길동</td>
-            </tr>
-            <tr id="row" onclick="bg(this)">
-
-                <td>6. aaa</td>
-                <td>6. 홍길동</td>
-            </tr>
-            <tr id="row" onclick="bg(this)">
-
-                <td>7. aaa</td>
-                <td>7. 홍길동</td>
-            </tr>
-        </tbody>
     </table>
 </body>
 
