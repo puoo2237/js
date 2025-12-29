@@ -22,8 +22,8 @@
             i = 1;
             id = Number(div.id.split("_")[1]);
             for (let j = id; j <= 10; j = id * i++) {
-                even_div = document.getElementById(`row_${j}`)
-                even_div.setAttribute("style", "color:red; font-size:20px;")
+                div_tmp = document.getElementById(`row_${j}`)
+                div_tmp.setAttribute("style", "color:red; font-size:20px;")
             }
         }
 
@@ -31,8 +31,8 @@
             i = 1;
             id = Number(div.id.split("_")[1]);
             for (let j = id; j <= 10; j = id * i++) {
-                even_div = document.getElementById(`row_${j}`)
-                even_div.removeAttribute("style")
+                div_tmp = document.getElementById(`row_${j}`)
+                div_tmp.removeAttribute("style")
             }
         }
 
