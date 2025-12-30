@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // key - value
+        const ex01 = () => {
+            let dic = { key1: 100, key2: 200, test: 300 }
+            console.log(dic)
+            console.log(dic['key1'])
+            console.log(dic.test)
+            dic['새로운키'] = "값이 저장된다"
+            console.log(dic)
+        }
+        const filter01 = (v, i) => {
+            console.log(v, i)
+            return v >= 50;
+        }
+        const ex02 = () => {
+            const data = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+            let result = data.filter(filter01);
+            console.log(result);
+        }
+        let userInfo1 = { id: "aaa", pwd: "aaa", name: "홍길동" }
+        const ex05 = () => {
+            div = document.querySelector(".test")
+            const msg = `
+            아이디: ${userInfo1['id']}<br>
+            비밀번호: ${userInfo1['pwd']}<br>
+            이름: ${userInfo1['name']}<br>
+            `
+            div.innerHTML = msg;
+        }
+        const users = [
+            { id: "aaa", pwd: "aaa", name: "a홍길동", age: 20 },
+            { id: "bbb", pwd: "bbb", name: "b홍길동", age: 30 },
+            { id: "ccc", pwd: "ccc", name: "c홍길동", age: 40 }
+        ]
+
+        const ex06 = () => {
+            console.log(users)
+            console.log(users[1])
+            console.log(users[1]['name'])
+
+            let msg = "";
+            users.forEach((user) => {
+                msg += "아이디: " + user['id'] + "<br>"
+                msg += "이름: " + user['name'] + "<hr>"
+            });
+            for (const u of users) {
+                msg += "u아이디: " + u['id'] + "<br>"
+                msg += "u이름: " + u['name'] + "<hr>"
+            }
+            // for (let i = 0; i < users.length; i++) {
+            //     msg += "아이디: " + users[i]['id'] + "<br>"
+            //     msg += "이름: " + users[i]['name'] + "<hr>"
+            // }
+            document.querySelector(".test").innerHTML = msg;
+
+        }
+
+        const ex07_btn = (value) => {
+            console.log("value: ", value)
+        }
+        const ex07 = () => {
+            const obj = { id: "aaa" }
+            // ex07_btn(obj.id)
+            document.querySelector(".test").innerHTML = `
+                <button onclick="ex07_btn('${obj.id}')">클릭</button>
+                `; // 문자열이라고 명시할 수 있도록 따옴표처리해줘야 함
+        }
+    </script>
+</head>
+
+<body onload="ex07()">
+    <div class="test"></div>
+</body>
+
+</html>
