@@ -21,10 +21,10 @@
         let w;
         const init = () => {
             const div = document.getElementById("div")
-            i %= 8
+            i %= list.length
             loadImg(list[i])
             i++
-            w = setInterval(init, 5000)
+            w = setInterval(init, 10000)
         }
         // 자동으로 넘기기 중 마우스가 이미지에 올라가면 자동 넘기기를 멈춤
         const over = () => {
