@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 페이지 시작하면 배열을 사용하여 사진이 자동으로 넘어가도록
+        var list = [];
+        for (let i = 1; i <= 8; i++) {
+            list[i - 1] = "images/최근상품0" + i + ".jpg"
+        }
+        const loadImg = (path) => {
+            div.innerHTML = `
+            <img onmouseover="over()" onmouseout="out()" src="${path}">
+            `
+        }
+        
+        let i = 0;
+        let w;
+        const init = () => {
+            const div = document.getElementById("div")
+            i %= 8
+            loadImg(list[i])
+            i++
+            w = setInterval(init, 5000)
+        }
+        // 자동으로 넘기기 중 마우스가 이미지에 올라가면 자동 넘기기를 멈춤
+        const over = () => {
+            clearInterval(w)
+            // console.log("종료")
+        }
+
+        // 마우스가 내려가면 자동 넘기기 동작
+        const out = () => {
+            init()
+            // console.log("재시작")
+        }
+    </script>
+    <style>
+        #div {
+            img {
+                height: 300px;
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body onload="init()">
+    <div id="div"></div>
+</body>
+
+</html>
