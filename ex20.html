@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let userInfo = [
+            {name: "홍길동", age: 20}
+        ]
+        const test = () => {
+            const form = document.getElementById("form_id")
+            const formData = new FormData(form) // 폼에 입력된 데이터들을 FormData 객체로 만듦
+            const data = Object.fromEntries(formData) // { name: "..." , age: "..." } 형태로 변환
+
+            userInfo = userInfo.concat(data)
+            console.log(userInfo)
+
+        }
+        const test1 = () => {
+            const form = document.getElementById("form_id")
+            const formData = new FormData(form)
+            const data = Object.fromEntries(formData)
+
+            // 나이 수정
+            userInfo = userInfo.map((user)=>{
+                if(user.name === data.name){
+                    user.age = data.age
+                }
+                return user
+            })
+            console.log(userInfo)
+
+        }
+    </script>
+    데이터 추가/수정
+    <form id="form_id">
+        <input type="text" name="name" id="aa" placeholder="이름"><br>
+        <input type="text" name="age" placeholder="나이"><br>
+        <input type="button" onclick="test()" value="회원가입">
+        <input type="button" onclick="test1()" value="수정">
+    </form>
+</body>
+
+</html>
