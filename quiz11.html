@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        const customInfo = [
+        let customInfo = [
             { id: "aaa", name: "홍길동", age: 20 },
             { id: "bbb", name: "김개똥", age: 30 },
             { id: "ccc", name: "고길동", age: 40 }
@@ -18,17 +18,17 @@
 
         // 모든 회원 보기
         const custom = (item) => {
-            return `
-            <tr id="${item.id}" onclick="moreInfo(this)">
+            return item ? `
+            <tr>
                 <td>${item.id}</td>
-                <td>${item.name}</td>
+                <td onclick="moreInfo('${item.id}')">${item.name}</td>
                 <td>${item.age}</td>
             </tr>
-            `
+            `: undefined
         }
 
         const makeTable = (msg) => {
-            return `
+            return msg ? `
         <table border="1">
             <thead>
                 <tr>
@@ -41,7 +41,7 @@
                     ${msg}
             </tbody>
         </table>
-            `
+            `: undefined
         }
         const allCustom = () => {
             let msg = "";
@@ -53,44 +53,49 @@
 
         // 특정 회원 조회
         const getCustomId = (customId) => {
-            return customInfo.filter(function (item) {
+            const res = customInfo.filter(function (item) {
                 return item.id == customId
             })
+            return res ? res : undefined
         }
 
         const dscCustom = () => {
             const input1 = document.getElementById('dsc_input_id')
-            const msg = custom(getCustomId(input1.value)[0])
+            const msg = input1.value ? custom(getCustomId(input1.value)[0]) : alert('회원 id를 입력해주세요')
+            console.log(msg)
             div.innerHTML = makeTable(msg)
+
+            input1.value = ""
         }
 
         // 특정 회원 삭제
-
         const delCustomId = (customId) => {
-            return customInfo.filter(function (item) {
+            const res = customInfo.filter(function (item) {
                 return item.id != customId
             })
+            return res ? res : undefined
         }
 
         const delCustom = () => {
             const input2 = document.getElementById('del_input_id')
-            let msg = "";
-            for (item of delCustomId(input2.value)) {
-                msg += custom(item)
+            if (getCustomId(input2.value)[0]) {
+                customInfo = delCustomId(input2.value)
+                allCustom()
+            } else {
+                div.innerHTML=alert('회원 id를 다시 입력해주세요')
             }
-            console.log(msg)
-            div.innerHTML = makeTable(msg)
+            input2.value = ""
         }
 
-        // 사용자 클릭 시 개인 정보 출력
-        const moreInfo = (row) => {
-            const custom = getCustomId(row.id)[0]
-            div.innerHTML = `
+            // 사용자 이름 클릭 시 개인 정보 출력
+            const moreInfo = (id) => {
+                const custom = getCustomId(id)[0]
+                div.innerHTML = `
             <b>아이디: </b> ${custom.id}<br>
             <b>이름: </b> ${custom.name}<br>
             <b>나이: </b> ${custom.age}
             `
-        }
+            }
     </script>
 </head>
 
