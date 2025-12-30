@@ -24,11 +24,11 @@
                 <td onclick="moreInfo('${item.id}')">${item.name}</td>
                 <td>${item.age}</td>
             </tr>
-            `: undefined
+            `: `<tr><td colspan="3" style="text-align:center;">사용자 없음</td></tr>`
         }
 
         const makeTable = (msg) => {
-            return msg ? `
+            return `
         <table border="1">
             <thead>
                 <tr>
@@ -41,7 +41,7 @@
                     ${msg}
             </tbody>
         </table>
-            `: undefined
+            `
         }
         const allCustom = () => {
             let msg = "";
