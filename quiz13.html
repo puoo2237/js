@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var list = [];
+        for (let i = 1; i <= 8; i++) {
+            list[i - 1] = "images/최근상품0" + i + ".jpg"
+        }
+
+        let j = 0;
+        let w;
+        const init = () => {
+            let msg = ""
+            j %=list.length
+            for (let i = 0; i <list.length; i++) {
+                msg += i == j ? `<input type="radio" checked>` : `<input type="radio">`
+            }
+            const div = document.getElementById("wrap")
+            div.innerHTML = `
+            <img id="img_id" src="${list[j]}"><br>
+            <hr>
+            ${msg}
+            `
+            j++
+            w = setInterval(init, 10000)
+        }
+    </script>
+    <style>
+        #wrap {
+            img {
+                height: 300px;
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body onload="init()">
+    <div id="wrap">
+    </div>
+</body>
+
+</html>
