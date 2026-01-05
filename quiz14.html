@@ -1,65 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        img { width: 100px; height: 100px;}
-        .list { position: fixed; right: 30px; top: 10px; width: 100px;}
-        .list_title { background-color: red;}
-    </style>
     <script>
+        // table 생성
         window.onload = () => {
-            const imgArr = ["최근상품01.jpg","최근상품02.jpg","최근상품03.jpg",
-                "최근상품04.jpg","최근상품05.jpg","최근상품06.jpg",
-                "최근상품07.jpg","최근상품08.jpg",
-            ];
-            const imageTable = document.getElementById("image_table");
-            let table = document.createElement("table");
+            const div = document.getElementById("div1")
+            const table = document.createElement("table")
             table.border = 1;
-            let image = "<tr>";
-            imgArr.forEach((value, index) => {
-                image += `
-                    <td>
-                        <img src="images/${value}" onclick="display(this)">
-                    </td>
-                `;
-                //index = 0 1 2 3 4 5 6 7
-                //length = 8 / 2 = 4 - 1
-                if( index == imgArr.length / 2 - 1 ){
-                    image += "</tr><tr>";
+            let tr;
+            for (let i = 1; i <= 9; i++) {
+                if (i % 4 == 1) {
+                    if (i > 1) {
+                        table.appendChild(tr)
+                        if (i == 9) break;
+                    }
+                    tr = document.createElement("tr")
                 }
-            });
-            image += "</tr>";
-            table.innerHTML = image
-            imageTable.appendChild( table )
-        }
-        let cnt = 0;
-        const display = (image) => {
-            if(cnt == 0){
-                const ls = document.getElementById("ls")
-                ls.innerHTML = "최근 구경한 상품"
-                ls.style.backgroundColor = "green";
-            }
 
-            const imageSize = 5
-            console.log( image )
-            const img = image.cloneNode(true);
-            const rp2 = document.getElementById("rp2")
-            rp2.appendChild( img )
-            cnt++;
-            if( cnt > imageSize ){
-                rp2.firstElementChild.remove();
+                const td = document.createElement("td")
+                const img = document.createElement("img")
+                img.addEventListener("click", view)
+                img.src = `images/최근상품0${i}.jpg`
+                td.appendChild(img)
+                tr.appendChild(td)
             }
+            div.appendChild(table)
+            console.log(table)
+        }
+
+        // 이미지를 클릭하면 텍스트를 최근 구경한 상품으로 변경하고
+        // 배경색을 초록색으로 변경한다
+        // 클릭한 이미지는 하나씩 추가되도록 하나, 최대 5개까지만 노출한다
+        const view = (event) => {
+            const div2 = document.getElementById("div2")
+            const ul = div2.children[0]
+            ul.children[0].innerHTML = "<h3>최근 구경한 상품</h3>"
+            ul.children[0].style.backgroundColor = "green"
+            const img = event.target.cloneNode(true)
+
+            if (ul.children.length > 5) {
+                ul.removeChild(ul.children[1])
+            }
+            ul.appendChild(img)
         }
     </script>
-</head> 
+    <style>
+        #div1 {
+
+            img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        #wrap {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #div2 {
+            width: 150px;
+
+            ul {
+                list-style: none;
+                padding: 0;
+
+                img {
+                    width: 150px;
+                    height: 150px;
+                }
+
+                & :nth-child(1) {
+                    margin: auto;
+                    text-align: center;
+                    background: red;
+                }
+
+            }
+        }
+    </style>
+</head>
+
 <body>
-    <div class="list">
-        <h3 class="list_title" id="ls" align="center">목록이<br>없습니다</h3>
-        <div id="rp2"></div>
-    </div>
-    <div id="image_table"></div>
+    <div id="wrap">
+        <div id="div1"></div>
+        <div id="div2">
+            <ul>
+                <li>
+                    <h3>목록이 없습니다.</h3>
+                </li>
+            </ul>
+        </div>
 </body>
+
 </html>

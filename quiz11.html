@@ -61,10 +61,13 @@
 
         const dscCustom = () => {
             const input1 = document.getElementById('dsc_input_id')
-            const msg = input1.value ? custom(getCustomId(input1.value)[0]) : alert('회원 id를 입력해주세요')
-            console.log(msg)
-            div.innerHTML = makeTable(msg)
-
+            if (input1.value) {
+                const msg = custom(getCustomId(input1.value)[0])
+                console.log(msg)
+                div.innerHTML = makeTable(msg)
+            } else {
+                alert('회원 id를 입력해주세요')
+            }
             input1.value = ""
         }
 
@@ -82,7 +85,7 @@
                 customInfo = delCustomId(input2.value)
                 allCustom()
             } else {
-                div.innerHTML=alert('회원 id를 다시 입력해주세요')
+                alert('회원 id를 다시 입력해주세요')
             }
             input2.value = ""
         }
